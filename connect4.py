@@ -14,26 +14,19 @@ print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
 
 print(f"Welcome to Connect4! You can choose to place your dot among the {colcount} spots on the board.\n The first player to connect 4 dots together wins! Enter 'exit' at anytime during the game to quit.")
 
-#creates filter that will recognize diagonal wins
-#left to right 
 
-
-#right to left
-
-
-
-while not gameover:
-	if turn % 2 == 0:
+while not gameover: #starting the connect 4 game
+	if turn % 2 == 0: #player 1 input
 		while True:
 			p1_input = input("Player 1, pick your spot!") #ask p1 input
-			try:
-				p1_input = int(p1_input)
+			try: #checking if input is integer
+				p1_input = int(p1_input) 
 				p1_input -= 1
-				if p1_input >= colcount or p1_input < 0:
+				if p1_input >= colcount or p1_input < 0: #checking if input out of range
 					print("Please pick a number within the range of the board")
 					continue
 				else:
-					if not c4.is_valid_move(board, p1_input, rowcount):
+					if not c4.is_valid_move(board, p1_input, rowcount): #checking if the column has atleast one empty space
 						print ("Please choose a valid move")
 						continue
 					else:
@@ -44,7 +37,7 @@ while not gameover:
 		c4.drop_piece(board, p1_input, rowcount, 1)
 		print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
 
-	else:
+	else: #same procees for player2
 		while True:
 			p2_input = input("Player 2, pick your spot!") #ask p2 input
 			try:
@@ -65,7 +58,7 @@ while not gameover:
 		c4.drop_piece(board, p2_input, rowcount, 2)
 		print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
 
-	win = c4.win_ver(board)
+	win = c4.win_ver(board) #check for win
 
 	if win == None:
 		turn += 1
