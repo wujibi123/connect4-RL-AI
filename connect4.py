@@ -1,24 +1,22 @@
 import numpy as np
 import c4
-
+from os import system
 
 rowcount = 6
 colcount = 7
 
-gameover = False
 turn = 0
 
 board = c4.create_board(rowcount, colcount)
 
-print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
+print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
-print(f"Welcome to Connect4! You can choose to place your dot among the {colcount} spots on the board.\n The first player to connect 4 dots together wins! Enter 'exit' at anytime during the game to quit.")
+print(f"Welcome to Connect4! You can choose to place your dot among the {colcount} spots on the board.\nThe first player to connect 4 dots together wins! Press ctrl-d to exit any time")
 
-
-while not gameover: #starting the connect 4 game
+while True: #starting the connect 4 game
 	if turn % 2 == 0: #player 1 input
 		while True:
-			p1_input = input("Player 1, pick your spot!") #ask p1 input
+			p1_input = input("\nPlayer 1, pick your spot!") #ask p1 input
 			try: #checking if input is integer
 				p1_input = int(p1_input) 
 				p1_input -= 1
@@ -35,11 +33,12 @@ while not gameover: #starting the connect 4 game
 				print ("Please pick an integer")
 				continue
 		c4.drop_piece(board, p1_input, rowcount, 1)
-		print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
+		system("clear")
+		print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
 	else: #same procees for player2
 		while True:
-			p2_input = input("Player 2, pick your spot!") #ask p2 input
+			p2_input = input("\nPlayer 2, pick your spot!") #ask p2 input
 			try:
 				p2_input = int(p2_input)
 				p2_input -= 1
@@ -56,7 +55,8 @@ while not gameover: #starting the connect 4 game
 				print ("Please pick an integer")
 				continue
 		c4.drop_piece(board, p2_input, rowcount, 2)
-		print (f" {list(range(1, colcount+ 1))} \n  ------------------- \n {board}")
+		system("clear")
+		print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
 	win = c4.win_ver(board) #check for win
 
