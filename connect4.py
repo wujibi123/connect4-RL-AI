@@ -9,7 +9,7 @@ turn = 0
 
 board = c4.create_board(rowcount, colcount)
 
-print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
+print (f"  {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
 print(f"Welcome to Connect4! You can choose to place your dot among the {colcount} spots on the board.\n The first player to connect 4 dots together wins! Enter 'exit' at anytime during the game to quit.")
 
@@ -34,7 +34,7 @@ while True: #starting the connect 4 game
 				print ("Please pick an integer")
 				continue
 		c4.drop_piece(board, p1_input, rowcount, 1)
-		print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
+		print (f"  {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
 	else: #same procees for player2
 		while True:
@@ -55,7 +55,7 @@ while True: #starting the connect 4 game
 				print ("Please pick an integer")
 				continue
 		c4.drop_piece(board, p2_input, rowcount, 2)
-		print (f" {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
+		print (f"  {list(range(1, colcount+ 1))} \n{'-'*rowcount*4} \n {str(board)[1:-1]}")
 
 	win = c4.win_ver(board) #check for win
 
